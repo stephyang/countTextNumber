@@ -13,6 +13,13 @@ class ViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var mylabel: UILabel!
     @IBOutlet weak var txtValue: UITextField!
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.txtValue.delegate = self
+    }
+
+    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
@@ -25,9 +32,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
         return newLength < 20
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
